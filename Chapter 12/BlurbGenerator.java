@@ -9,6 +9,12 @@ public class BlurbGenerator {
 		}
 		else {
 			return newWhoozit() + newWhatzit() + newBlurb(whatzits-1);
+			// blurb = whoozit + (k)whatzit; (k>0)
+			// whoozit = x + (n)y; (n>=0)
+			// whatzit = q + z/d + whoozit = q + z/d + x + (n)y; (n>=0)
+			
+			// unique part of a whatzit = q + z/d
+			// blurb = whoozit + (k)(unique part of a whatzit + whoozit) (k>0)
 		}
 		
 	}
@@ -44,6 +50,6 @@ public class BlurbGenerator {
 	}
 	
 	public static void main(String[] args){
-		System.out.println(newBlurb(2));
+		System.out.println(newBlurb(3));
 	}
 }

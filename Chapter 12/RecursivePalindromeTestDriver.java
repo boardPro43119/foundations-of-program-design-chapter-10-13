@@ -2,15 +2,17 @@ import java.util.Scanner;
 
 public class RecursivePalindromeTestDriver {
 	
-	public static String test(String input){
-		int length = input.length();
+	public static String test(String input){	
+		String cleanInput = input.toLowerCase().replaceAll("[^a-z]", "");
+		
+		int length = cleanInput.length();
 		
 		int firstHalfEnd;
 		int secondHalfStart;
 		
 		String secondHalfReversed = "";
 		
-		if(input.length()%2 == 0){
+		if(length%2 == 0){
 			firstHalfEnd = length/2 - 1;
 			secondHalfStart = length/2;
 			
@@ -20,8 +22,8 @@ public class RecursivePalindromeTestDriver {
 			secondHalfStart = firstHalfEnd;
 		}	
 			
-		String firstHalf = input.substring(0, firstHalfEnd+1);
-		String secondHalf = input.substring(secondHalfStart, length);
+		String firstHalf = cleanInput.substring(0, firstHalfEnd+1);
+		String secondHalf = cleanInput.substring(secondHalfStart, length);
 		
 		//debugging
 		System.out.println("First half: characters 0 to " + firstHalfEnd);

@@ -1,5 +1,5 @@
 //******************************************************************** 
-//  Maze.java       Author: Lewis/Loftus // 
+//  Maze.java       Author: Benjamin Prud'homme // 
 //  Represents a maze of characters. The goal is to get from the 
 //  top left corner to the bottom right, following a path of 1s. 
 //********************************************************************
@@ -7,7 +7,7 @@ public class Maze {
 	private final int TRIED = 3;  
 	private final int PATH = 7;
    	
-	private int[][] grid = { {1,1,1,0,1,1,0,0,0,1,1,1,1},                            
+	public int[][] grid = { {1,1,1,0,1,1,0,0,0,1,1,1,1},                            
 							{1,0,1,1,1,0,1,1,1,1,0,0,1},                            
 							{0,0,0,0,1,0,1,0,1,0,1,0,0},                            
 							{1,1,1,0,1,1,1,0,1,0,1,1,1},
@@ -25,9 +25,9 @@ public class Maze {
 	 public boolean traverse (int row, int column){      
 	 	boolean done = false;
       	if (valid (row, column)){         
-			grid[row][column] = TRIED;  // this cell has been tried
+			grid[row][column] = PATH;  // this cell could be part of the final path
 			
-			if(row == grid.length-1 && column == grid[0].length-1)
+			if(row == 0 && column == 0)
 				done = true;  // the maze is solved         
 			else{            
 				done = traverse (row+1, column);     // down            
@@ -38,8 +38,8 @@ public class Maze {
 				if (!done)               
 					done = traverse (row, column-1);  // left         
 			}
-         if (done)  // this location is part of the final path            
-		 	grid[row][column] = PATH;      
+         if (!done)  // if we are blocked, change this cell to tried            
+		 	grid[row][column] = TRIED;      
 		}      
 		return done;   
 	}

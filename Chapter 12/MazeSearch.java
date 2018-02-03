@@ -10,7 +10,7 @@ public class MazeSearch {
 	public static void main (String[] args){      
 		Maze labyrinth = new Maze();
      	System.out.println (labyrinth);
-     	if (labyrinth.traverse (0, 0))        
+     	if (labyrinth.traverse (labyrinth.grid.length-1, labyrinth.grid[0].length-1))        
 			System.out.println ("The maze was successfully traversed!");      
 		else         
 			System.out.println ("There is no possible path.");
